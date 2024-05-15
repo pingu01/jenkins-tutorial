@@ -5,7 +5,7 @@ pipeline {
         stage ('build'){
             steps{
                 script{
-                    dockerapp = docker.build('pingu01/jenkins-tutorial', '-f ./app/Dockerfile . ./app') {}
+                    dockerapp = docker.build('pingu01/jenkins-tutorial', '-f ./app/Dockerfile .') {}
                 }
             }
 
