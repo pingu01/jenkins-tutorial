@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Correcting the docker build command
-                    dockerapp = docker.build('jenkins-tutorial', '-f ./app/Dockerfile ./app')
+                    dockerapp = docker.build('jenkins-tutorial', './app')
                 }
             }
         }
