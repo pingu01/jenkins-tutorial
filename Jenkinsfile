@@ -13,8 +13,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                        dockerapp.push('latest')
-                        dockerapp.push("${env.BUILD_ID}")
+                        dockerapp.image('latest').push()
+                        dockerapp.image("${env.BUILD_ID}").push()
                     }
                 }
             }
