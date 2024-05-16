@@ -5,8 +5,16 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    // Correcting the docker build command
-                    dockerapp = docker.build('jenkins-tutorial', './app')
+                    dockerapp = docker.build("jenkins-tutorial:${env.BUILD_ID}", "./app")
+                }
+            }
+        }
+        stage('push image to dockerhub') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        dockerapp.push('latest')
+                    }
                 }
             }
         }
